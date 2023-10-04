@@ -7,12 +7,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class ="alert-box" id="alert"> Alert Box <button onClick="controlAlertBox('none')"> close </button></div>
-    <button onclick="controlAlertBox ('block')"> btn </button>
+
+    <div class ="alert-box" id="alert"> <span id="title"> Alert Box </span>             
+         <button onClick="controlAlertBox('none')"> close </button>
+    </div>
+    <button onclick="controlAlertBox('Accounts')"> Accounts </button>
+    <button onclick="controlAlertBox('Password')"> Password </button>
 
     <script>
         function controlAlertBox (str) {
-            document.getElementById('alert').style.display=str;
+            document.getElementById('alert').style.display='block';
+            if(str=='Accounts'){
+                document.getElementById('title').innerHTML = 'Accounts';
+            } else if(str == 'Password'){
+                document.getElementById('title').innerHTML = 'Password';
+            } else if( str == 'none'){
+                document.getElementById('alert').style.display='none';
+            }
         }
     </script>
 </body>

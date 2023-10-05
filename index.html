@@ -24,7 +24,7 @@
       </div>
     </nav>
 
-    <ul class="list-group mb-5">
+    <ul class="list-group show mb-5">
       <li class="list-group-item">An item</li>
       <li class="list-group-item">A second item</li>
       <li class="list-group-item">A third item</li>
@@ -41,11 +41,28 @@
     <script>
       // 내가 계속 틀리는 파트는 addEventListener 이후에 ('click', ...) 이 아니라 (click)으로 이벤트 타입이 아닌 값을 자꾸 넣어서 문제가 발생하게 만들었다.
       // 두번재 문제는 style.display = 는 속성이므로 값을 직접 할당해야 하는데 style.display('block') 으로 계속 할당해서 문제가 있었다. 두 가지를 모두 기억할 것.
+
+      //list-group을 그냥 "block"만 해주는 거고 누를때마다 상태 바꿔가며 하기:
+      // document
+      //   .getElementsByClassName("navbar-toggler")[0]
+      //   .addEventListener("click", function () {
+      //     document.getElementsByClassName("list-group")[0].style.display =
+      //       "block";
+      //   });
+
+      // if 문 써서 상태 변화하기:
       document
         .getElementsByClassName("navbar-toggler")[0]
         .addEventListener("click", function () {
-          document.getElementsByClassName("list-group")[0].style.display =
-            "block";
+          const listGroup = document.getElementsByClassName("list-group")[0];
+          if (
+            listGroup.style.display == "none" ||
+            listGroup.style.display == ""
+          ) {
+            listGroup.style.display = "block";
+          } else {
+            listGroup.style.display = "none";
+          }
         });
     </script>
   </body>

@@ -1,30 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand">Navbar</span>
+        <button class="navbar-toggler" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
 
-    <div class ="alert-box" id="alert"> <span id="title"> Alert Box </span>             
-         <button onClick="controlAlertBox('none')"> close </button>
+    <ul class="list-group d-none mb-5">
+      <li class="list-group-item">An item</li>
+      <li class="list-group-item">A second item</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A fourth item</li>
+      <li class="list-group-item">And a fifth one</li>
+    </ul>
+
+    <!-- regacy -->
+    <div class="alert alert-warning" role="alert" id="alert">
+      <span id="title"> Alert Box </span>
+      <button
+        type="button"
+        class="btn btn-danger"
+        onClick="controlAlertBox('none')"
+      >
+        close
+      </button>
     </div>
-    <button onclick="controlAlertBox('Accounts')"> Accounts </button>
-    <button onclick="controlAlertBox('Password')"> Password </button>
+    <button
+      type="button"
+      class="btn btn-info"
+      onclick="controlAlertBox('Accounts')"
+    >
+      Accounts
+    </button>
+    <button
+      type="button"
+      class="btn btn-info"
+      onclick="controlAlertBox('Password')"
+    >
+      Password
+    </button>
 
+    <hr />
+    <div class="alert alert-warning" role="alert" id="alert2">
+      <span id="box-title"> Event Listener Box </span>
+      <button type="button" class="btn btn-danger" id="event-box">close</button>
+    </div>
+
+    <button type="button" class="btn btn-info" id="open-button">
+      Event Listener Box
+    </button>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
     <script>
-        function controlAlertBox (str) {
-            document.getElementById('alert').style.display='block';
-            if(str=='Accounts'){
-                document.getElementById('title').innerHTML = 'Accounts';
-            } else if(str == 'Password'){
-                document.getElementById('title').innerHTML = 'Password';
-            } else if( str == 'none'){
-                document.getElementById('alert').style.display='none';
-            }
+      function controlAlertBox(str) {
+        document.getElementById("alert").style.display = "block";
+        if (str == "Accounts") {
+          document.getElementById("title").innerHTML = "Accounts";
+        } else if (str == "Password") {
+          document.getElementById("title").innerHTML = "Password";
+        } else if (str == "none") {
+          document.getElementById("alert").style.display = "none";
         }
+      }
+
+      document
+        .getElementById("event-box")
+        .addEventListener("click", function () {
+          document.getElementById("alert2").style.display = "none";
+        });
+
+      document
+        .getElementById("open-button")
+        .addEventListener("click", function () {
+          document.getElementById("alert2").style.display = "block";
+        });
     </script>
-</body>
+  </body>
 </html>

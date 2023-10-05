@@ -32,6 +32,46 @@
       <li class="list-group-item">And a fifth one</li>
     </ul>
 
+    <div class="card m-5 p-3" style="width: 20rem">
+      <img class="card-img-top" src="..." alt="Card image cap" />
+      <div class="card-body">
+        <p class="card-text">
+          Jquery Test message. <p class="card-test-text">This is basically black font colour</p>
+        </p>
+      </div>
+    </div>
+
+
+    <div class="card m-5 p-lg-3" id="btn-card" style="width: 20rem;">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary" id="test-card-btn">Go somewhere</a>
+      </div>
+    </div>
+
+
+    <!-- modal example-->
+    <button class="btn btn-primary m-xl-5" id="modal-open-btn" type="button" data-toggle="modal" data-target="#myModal">Launch modal</button>
+    <div class="black-bg d-none " id="modal-box">
+      <div class="card border-light white-bg" style="max-width: 30rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+          <h5 class="card-title">Light card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <button class="btn btn-primary" type="button" id="modal-close-btn">close</button>
+        </div>
+      </div>
+    </div>
+
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -42,35 +82,57 @@
       // 내가 계속 틀리는 파트는 addEventListener 이후에 ('click', ...) 이 아니라 (click)으로 이벤트 타입이 아닌 값을 자꾸 넣어서 문제가 발생하게 만들었다.
       // 두번재 문제는 style.display = 는 속성이므로 값을 직접 할당해야 하는데 style.display('block') 으로 계속 할당해서 문제가 있었다. 두 가지를 모두 기억할 것.
 
-      //list-group을 그냥 "block"만 해주는 거고 누를때마다 상태 바꿔가며 하기:
-      // document
-      //   .getElementsByClassName("navbar-toggler")[0]
-      //   .addEventListener("click", function () {
-      //     document.getElementsByClassName("list-group")[0].style.display =
-      //       "block";
-      //   });
+      //document
+      //.querySelectorAll(".navbar-toggler")[0]
+      //.addEventListener("click", function () {
+      // document.querySelectorAll(".list-group")[0].classList.toggle("show");
+      //});
 
-      // if 문 써서 상태 변화하기:
-      // document
-      //   .getElementsByClassName("navbar-toggler")[0]
-      //   .addEventListener("click", function () {
-      //     const listGroup = document.getElementsByClassName("list-group")[0];
-      //     if (
-      //       listGroup.style.display == "none" ||
-      //       listGroup.style.display == ""
-      //     ) {
-      //       listGroup.style.display = "block";
-      //     } else {
-      //       listGroup.style.display = "none";
-      //     }
-      //   });
+      // 위의 코드는 jquery로 아래와 같다.
+      $(".navbar-toggler:first").on("click", function () {
+        $(".list-group:first").toggleClass("show");
+      });
 
-      // show class로 상태 변화시키기: (css show 클래스를 추가한다.)
-      document
-        .querySelectorAll(".navbar-toggler")[0]
-        .addEventListener("click", function () {
-          document.querySelectorAll(".list-group")[0].classList.toggle("show");
-        });
+      //같은 방식으로 배열을 사용할때 eq(0)를 사용해서 표현할 수도 있다. 위와 아래는 정확히 같다.
+      // $(".navbar-toggler").eq(0).on("click", function () {
+      //     $(".list-group").eq(0).toggleClass("show");
+      // });
+
+      $(".card-test-text").html('This is replaced Text');
+      $(".card-test-text").css('color', 'red');
+      $('.card-test-text').addClass('show');
+      //제거는 removeClass(), 토글은 .toggleClass()
+
+      //hide와 fade를 쓰면 자연스럽게 사라지게 하는 효과를 얻을 수 있다. (hide = display:none, block의 역할, fade는 transition이 더해짐)
+      $('#test-card-btn').on('click', function() {
+        $('#btn-card').fadeOut();
+      })
+      //더해서 slideUp() 하면 자연스럽게 navbar의 toggle버튼 메뉴들이 위로 사라지게 만들 수도 있다.
+
+      // Jquery Tips:
+      //jquery로 찾은 class나 id => $(셀렉터)는 무조건 뒤에 method를 붙일때
+      // innerHtml같이 바닐라 자바스크립트를 쓰는게 아니라 .html처럼 끝까지 jquery방식으로 붙여야 찾을 수잇음.
+      
+      
+      //modal 예제
+      $('#modal-open-btn').on('click', function() {
+        $('#modal-box').toggleClass('d-none');
+      })
+      $('#modal-close-btn').on('click', function() {
+        $('#modal-box').addClass('d-none');
+      })
+
+      // modal fadeout in예제,
+      // fadeOut을 쓸 때 불러오는 것은 fadeIn과 함께 쓰는것이 맞다.
+      // $('#modal-open-btn').on('click', function() {
+      //   $('#modal-box').fadeIn(1); // 거의 즉시 표시
+      // })
+      // $('#modal-close-btn').on('click', function() {
+      //   $('#modal-box').fadeOut(1); // 거의 즉시
+
+
     </script>
+
+
   </body>
 </html>

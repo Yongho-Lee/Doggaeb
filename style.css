@@ -22,20 +22,19 @@
 .black-bg {
     width : 100%;
     height : 100%;
-    position : fixed;
+    position : fixed; /* 스크롤 해도 화면에 고정돼있음 */
     top: 0;
     left: 0;
     background : rgba(0,0,0,0.5);
-    z-index : 5;
+    z-index : 5; /* 1이상만 넣으면 다른 것보다 위임 */
     padding: 30px;
-    display: flex;            /* flexbox를 활성화 */
-    justify-content: center; /* 가로 중앙 정렬 */
-    align-items: center;  
+    display: flex;            /* flexbox를 활성화(화이트박스의 위치) */
+    justify-content: center; /* 화이트 박스(블랙박스의 내부)의 가로 중앙 정렬 */
+    align-items: center;  /* 화이트 박스의 세로 중앙 정렬 */
   }
   .white-bg {
     background: white;
     border-radius: 5px;
     padding: 30px;
-    position: relative; 
     
   } 

@@ -35,36 +35,48 @@
     <div class="card m-5 p-3" style="width: 20rem">
       <img class="card-img-top" src="..." alt="Card image cap" />
       <div class="card-body">
-        <p class="card-text">
-          Jquery Test message. <p class="card-test-text">This is basically black font colour</p>
-        </p>
+        <p class="card-text">Jquery Test message.</p>
+        <p class="card-test-text">This is basically black font colour</p>
       </div>
     </div>
 
-
-    <div class="card m-5 p-lg-3" id="btn-card" style="width: 20rem;">
-      <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card m-5 p-lg-3" id="btn-card" style="width: 20rem">
+      <img class="card-img-top" src="..." alt="Card image cap" />
       <div class="card-body">
         <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
         <a href="#" class="btn btn-primary" id="test-card-btn">Go somewhere</a>
       </div>
     </div>
 
-
     <!-- modal example-->
-    <button class="btn btn-primary m-xl-5" id="modal-open-btn" type="button" data-toggle="modal" data-target="#myModal">Launch modal</button>
-    <div class="black-bg d-none " id="modal-box">
-      <div class="card border-light white-bg" style="max-width: 30rem;">
+    <button
+      class="btn btn-primary m-xl-5"
+      id="modal-open-btn"
+      type="button"
+      data-toggle="modal"
+      data-target="#myModal"
+    >
+      Launch modal
+    </button>
+    <div class="black-bg d-none" id="modal-box">
+      <div class="card border-light white-bg" style="max-width: 30rem">
         <div class="card-header">Header</div>
         <div class="card-body">
           <h5 class="card-title">Light card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <button class="btn btn-primary" type="button" id="modal-close-btn">close</button>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <button class="btn btn-primary" type="button" id="modal-close-btn">
+            close
+          </button>
         </div>
       </div>
     </div>
-
 
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -98,29 +110,28 @@
       //     $(".list-group").eq(0).toggleClass("show");
       // });
 
-      $(".card-test-text").html('This is replaced Text');
-      $(".card-test-text").css('color', 'red');
-      $('.card-test-text').addClass('show');
+      $(".card-test-text").html("This is replaced Text");
+      $(".card-test-text").css("color", "red");
+      $(".card-test-text").addClass("show");
       //제거는 removeClass(), 토글은 .toggleClass()
 
       //hide와 fade를 쓰면 자연스럽게 사라지게 하는 효과를 얻을 수 있다. (hide = display:none, block의 역할, fade는 transition이 더해짐)
-      $('#test-card-btn').on('click', function() {
-        $('#btn-card').fadeOut();
-      })
+      $("#test-card-btn").on("click", function () {
+        $("#btn-card").fadeOut();
+      });
       //더해서 slideUp() 하면 자연스럽게 navbar의 toggle버튼 메뉴들이 위로 사라지게 만들 수도 있다.
 
       // Jquery Tips:
       //jquery로 찾은 class나 id => $(셀렉터)는 무조건 뒤에 method를 붙일때
       // innerHtml같이 바닐라 자바스크립트를 쓰는게 아니라 .html처럼 끝까지 jquery방식으로 붙여야 찾을 수잇음.
-      
-      
+
       //modal 예제
-      $('#modal-open-btn').on('click', function() {
-        $('#modal-box').toggleClass('d-none');
-      })
-      $('#modal-close-btn').on('click', function() {
-        $('#modal-box').addClass('d-none');
-      })
+      $("#modal-open-btn").on("click", function () {
+        $("#modal-box").toggleClass("d-none");
+      });
+      $("#modal-close-btn").on("click", function () {
+        $("#modal-box").addClass("d-none");
+      });
 
       // modal fadeout in예제,
       // fadeOut을 쓸 때 불러오는 것은 fadeIn과 함께 쓰는것이 맞다.
@@ -129,10 +140,6 @@
       // })
       // $('#modal-close-btn').on('click', function() {
       //   $('#modal-box').fadeOut(1); // 거의 즉시
-
-
     </script>
-
-
   </body>
 </html>

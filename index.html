@@ -1,30 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-    <div class ="alert-box" id="alert"> <span id="title"> Alert Box </span>             
-         <button onClick="controlAlertBox('none')"> close </button>
-    </div>
-    <button onclick="controlAlertBox('Accounts')"> Accounts </button>
-    <button onclick="controlAlertBox('Password')"> Password </button>
+    <!-- bootstrap 의 위치와 style.css의 순서가 중요하다. style.css가 먼저 나오면 먼저 css를 적용하고 뒤에 bootstrap의 값을 적용하기 때문에 list-group의 속성을 css에서 display: none을 줘도 결국 다시 block형태가 되기 때문에 사용할 수 없었다. -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand">Navbar</span>
+        <button class="navbar-toggler" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+
+    <ul class="list-group mb-5">
+      <li class="list-group-item">An item</li>
+      <li class="list-group-item">A second item</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A fourth item</li>
+      <li class="list-group-item">And a fifth one</li>
+    </ul>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
 
     <script>
-        function controlAlertBox (str) {
-            document.getElementById('alert').style.display='block';
-            if(str=='Accounts'){
-                document.getElementById('title').innerHTML = 'Accounts';
-            } else if(str == 'Password'){
-                document.getElementById('title').innerHTML = 'Password';
-            } else if( str == 'none'){
-                document.getElementById('alert').style.display='none';
-            }
-        }
+      // 내가 계속 틀리는 파트는 addEventListener 이후에 ('click', ...) 이 아니라 (click)으로 이벤트 타입이 아닌 값을 자꾸 넣어서 문제가 발생하게 만들었다.
+      // 두번재 문제는 style.display = 는 속성이므로 값을 직접 할당해야 하는데 style.display('block') 으로 계속 할당해서 문제가 있었다. 두 가지를 모두 기억할 것.
+
+      //list-group을 그냥 "block"만 해주는 거고 누를때마다 상태 바꿔가며 하기:
+      // document
+      //   .getElementsByClassName("navbar-toggler")[0]
+      //   .addEventListener("click", function () {
+      //     document.getElementsByClassName("list-group")[0].style.display =
+      //       "block";
+      //   });
+
+      // if 문 써서 상태 변화하기:
+      // document
+      //   .getElementsByClassName("navbar-toggler")[0]
+      //   .addEventListener("click", function () {
+      //     const listGroup = document.getElementsByClassName("list-group")[0];
+      //     if (
+      //       listGroup.style.display == "none" ||
+      //       listGroup.style.display == ""
+      //     ) {
+      //       listGroup.style.display = "block";
+      //     } else {
+      //       listGroup.style.display = "none";
+      //     }
+      //   });
+
+      // show class로 상태 변화시키기: (css show 클래스를 추가한다.)
+      document
+        .querySelectorAll(".navbar-toggler")[0]
+        .addEventListener("click", function () {
+          document.querySelectorAll(".list-group")[0].classList.toggle("show");
+        });
     </script>
-</body>
+  </body>
 </html>

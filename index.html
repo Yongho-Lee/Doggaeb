@@ -24,7 +24,7 @@
       </div>
     </nav>
 
-    <ul class="list-group show mb-5">
+    <ul class="list-group mb-5">
       <li class="list-group-item">An item</li>
       <li class="list-group-item">A second item</li>
       <li class="list-group-item">A third item</li>
@@ -51,18 +51,25 @@
       //   });
 
       // if 문 써서 상태 변화하기:
+      // document
+      //   .getElementsByClassName("navbar-toggler")[0]
+      //   .addEventListener("click", function () {
+      //     const listGroup = document.getElementsByClassName("list-group")[0];
+      //     if (
+      //       listGroup.style.display == "none" ||
+      //       listGroup.style.display == ""
+      //     ) {
+      //       listGroup.style.display = "block";
+      //     } else {
+      //       listGroup.style.display = "none";
+      //     }
+      //   });
+
+      // show class로 상태 변화시키기: (css show 클래스를 추가한다.)
       document
-        .getElementsByClassName("navbar-toggler")[0]
+        .querySelectorAll(".navbar-toggler")[0]
         .addEventListener("click", function () {
-          const listGroup = document.getElementsByClassName("list-group")[0];
-          if (
-            listGroup.style.display == "none" ||
-            listGroup.style.display == ""
-          ) {
-            listGroup.style.display = "block";
-          } else {
-            listGroup.style.display = "none";
-          }
+          document.querySelectorAll(".list-group")[0].classList.toggle("show");
         });
     </script>
   </body>

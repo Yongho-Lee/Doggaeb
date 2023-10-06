@@ -38,3 +38,16 @@
     padding: 30px;
     
   } 
+
+
+  /* fade out in방식으로 이런 방식도 가능, visibility는 display:none과 비슷하나, none은 html자체에서 제거하는거면 visibility는 남아있음
+  .black-bg {
+  (생략)
+  visibility : hidden;
+  opacity : 0;
+}
+.show-modal {
+  visibility : visible;
+  opacity : 1;
+}
+  */

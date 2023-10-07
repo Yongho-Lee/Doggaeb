@@ -32,48 +32,33 @@
       <li class="list-group-item">And a fifth one</li>
     </ul>
 
-    <div class="card m-5 p-3" style="width: 20rem">
-      <img class="card-img-top" src="..." alt="Card image cap" />
-      <div class="card-body">
-        <p class="card-text">Jquery Test message.</p>
-        <p class="card-test-text">This is basically black font colour</p>
-      </div>
-    </div>
-
-    <div class="card m-5 p-lg-3" id="btn-card" style="width: 20rem">
-      <img class="card-img-top" src="..." alt="Card image cap" />
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <a href="#" class="btn btn-primary" id="test-card-btn">Go somewhere</a>
-      </div>
+    <div class="main-bg">
+      <h4>Some text for Banner</h4>
+      <button id="login" class="btn btn-danger">Login</button>
     </div>
 
     <!-- modal example-->
-    <button
-      class="btn btn-primary m-xl-5"
-      id="modal-open-btn"
-      type="button"
-      data-toggle="modal"
-      data-target="#myModal"
-    >
-      Launch modal
-    </button>
+
     <div class="black-bg d-none" id="modal-box">
       <div class="card border-light white-bg" style="max-width: 30rem">
-        <div class="card-header">Header</div>
+        <div class="card-header">Login</div>
         <div class="card-body">
-          <h5 class="card-title">Light card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <button class="btn btn-primary" type="button" id="modal-close-btn">
-            close
-          </button>
+          <h5 class="card-title">Use your account to login</h5>
+          <form action="success.html">
+            <div class="my-3">
+              <input type="text" class="form-control" id="form-accounts" />
+            </div>
+            <div class="my-3">
+              <input type="password" class="form-control" id="form-password" />
+            </div>
+            <button type="submit" class="btn btn-primary" id="modal-send">
+              Login
+            </button>
+            <!-- submit type은 하나만 있어야 함-->
+            <button class="btn btn-danger" type="button" id="modal-close-btn">
+              close
+            </button>
+          </form>
         </div>
       </div>
     </div>
@@ -91,55 +76,31 @@
     ></script>
 
     <script>
-      // 내가 계속 틀리는 파트는 addEventListener 이후에 ('click', ...) 이 아니라 (click)으로 이벤트 타입이 아닌 값을 자꾸 넣어서 문제가 발생하게 만들었다.
-      // 두번재 문제는 style.display = 는 속성이므로 값을 직접 할당해야 하는데 style.display('block') 으로 계속 할당해서 문제가 있었다. 두 가지를 모두 기억할 것.
-
-      //document
-      //.querySelectorAll(".navbar-toggler")[0]
-      //.addEventListener("click", function () {
-      // document.querySelectorAll(".list-group")[0].classList.toggle("show");
-      //});
-
-      // 위의 코드는 jquery로 아래와 같다.
       $(".navbar-toggler:first").on("click", function () {
         $(".list-group:first").toggleClass("show");
       });
 
-      //같은 방식으로 배열을 사용할때 eq(0)를 사용해서 표현할 수도 있다. 위와 아래는 정확히 같다.
-      // $(".navbar-toggler").eq(0).on("click", function () {
-      //     $(".list-group").eq(0).toggleClass("show");
-      // });
-
-      $(".card-test-text").html("This is replaced Text");
-      $(".card-test-text").css("color", "red");
-      $(".card-test-text").addClass("show");
-      //제거는 removeClass(), 토글은 .toggleClass()
-
-      //hide와 fade를 쓰면 자연스럽게 사라지게 하는 효과를 얻을 수 있다. (hide = display:none, block의 역할, fade는 transition이 더해짐)
-      $("#test-card-btn").on("click", function () {
-        $("#btn-card").fadeOut();
-      });
-      //더해서 slideUp() 하면 자연스럽게 navbar의 toggle버튼 메뉴들이 위로 사라지게 만들 수도 있다.
-
-      // Jquery Tips:
-      //jquery로 찾은 class나 id => $(셀렉터)는 무조건 뒤에 method를 붙일때
-      // innerHtml같이 바닐라 자바스크립트를 쓰는게 아니라 .html처럼 끝까지 jquery방식으로 붙여야 찾을 수잇음.
-
-      //modal 예제
-      $("#modal-open-btn").on("click", function () {
+      $("#login").on("click", function () {
         $("#modal-box").toggleClass("d-none");
       });
       $("#modal-close-btn").on("click", function () {
         $("#modal-box").addClass("d-none");
       });
 
-      // modal fadeout in예제,
-      // fadeOut을 쓸 때 불러오는 것은 fadeIn과 함께 쓰는것이 맞다.
-      // $('#modal-open-btn').on('click', function() {
-      //   $('#modal-box').fadeIn(1); // 거의 즉시 표시
-      // })
-      // $('#modal-close-btn').on('click', function() {
-      //   $('#modal-box').fadeOut(1); // 거의 즉시
+      // 주요하게 봐야 할점. tag선택자("tag"), if문의 형성 필드의 값을 가져오기 위해서 쓴 $('#id').val()
+      // e.preventDefault()는 폼의 이벤트 기본 동작을 중단. function (e) 는 특정이벤트가 발생할때 호출된 이벤트 객체.
+      $("form").on("submit", function (e) {
+        if (
+          $("#form-accounts").val() == "" ||
+          $("#form-password").val() == ""
+        ) {
+          e.preventDefault();
+          alert("incorrect accounts or password");
+        } else if ($("#form-password").val().length < 6) {
+          e.preventDefault();
+          alert("Password must be more than 6");
+        }
+      });
     </script>
   </body>
 </html>

@@ -18,6 +18,7 @@
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
         <span class="navbar-brand">Navbar</span>
+        <span class="badge bg-dark ms-auto mx-3">Dark 🔄</span>
         <button class="navbar-toggler" type="button">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -46,10 +47,10 @@
           <h5 class="card-title">Use your account to login</h5>
           <form action="success.html">
             <div class="my-3">
-              <input type="text" class="form-control" id="form-accounts" />
+              <input type="text" class="form-control" id="field-id" />
             </div>
             <div class="my-3">
-              <input type="password" class="form-control" id="form-password" />
+              <input type="password" class="form-control" id="field-password" />
             </div>
             <button type="submit" class="btn btn-primary" id="modal-send">
               Login
@@ -87,18 +88,47 @@
         $("#modal-box").addClass("d-none");
       });
 
-      // 주요하게 봐야 할점. tag선택자("tag"), if문의 형성 필드의 값을 가져오기 위해서 쓴 $('#id').val()
+      // 주요하게 봐야 할점. tag선택자("tag"), if문의 형성 필드의 값을 가져오기 위해서 쓴 $('#id').val() 바닐라는 .value()
       // e.preventDefault()는 폼의 이벤트 기본 동작을 중단. function (e) 는 특정이벤트가 발생할때 호출된 이벤트 객체.
       $("form").on("submit", function (e) {
-        if (
-          $("#form-accounts").val() == "" ||
-          $("#form-password").val() == ""
-        ) {
+        if ($("#field-id").val() == "" || $("#field-password").val() == "") {
           e.preventDefault();
           alert("incorrect accounts or password");
-        } else if ($("#form-password").val().length < 6) {
+        } else if ($("#field-password").val().length < 6) {
           e.preventDefault();
           alert("Password must be more than 6");
+        }
+      });
+
+      // 페이지 dark 버튼 반영
+      $(".badge").on("click", function () {
+        var badgeButtonState = $(this).data("state") || "dark";
+        //badge color dark = default
+        if (badgeButtonState == "dark") {
+          $(this)
+            .removeClass("bg-dark text-dark")
+            .addClass("bg-light text-dark");
+          $(this).text("Light 🔄");
+          $(this).data("state", "light");
+          $(".navbar")
+            .removeClass("navbar-light bg-light")
+            .addClass("navbar-dark bg-dark");
+          $(".list-group-item")
+            .removeClass("text-dark bg-light")
+            .addClass("text-light bg-dark");
+        } else if (badgeButtonState == "light") {
+          // badge color white
+          $(this)
+            .removeClass("bg-light text-dark")
+            .addClass("bg-dark text-light");
+          $(this).text("Dark 🔄");
+          $(this).data("state", "dark");
+          $(".navbar")
+            .removeClass("navbar-dark bg-dark")
+            .addClass("navbar-light bg-light");
+          $(".list-group-item")
+            .removeClass("text-light bg-dark")
+            .addClass("text-dark bg-light");
         }
       });
     </script>

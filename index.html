@@ -38,8 +38,9 @@
       <button id="login" class="btn btn-danger">Login</button>
     </div>
 
-    <!-- modal example-->
+    <div class="alert alert-danger">Click In 5 Seconds</div>
 
+    <!-- modal example-->
     <div class="black-bg d-none" id="modal-box">
       <div class="card border-light white-bg" style="max-width: 30rem">
         <div class="card-header">Login</div>
@@ -131,6 +132,8 @@
             .addClass("text-dark bg-light");
         }
       });
+
+      setTimeout(function () {}, 5000);
     </script>
   </body>
 </html>

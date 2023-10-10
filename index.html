@@ -38,7 +38,11 @@
       <button id="login" class="btn btn-danger">Login</button>
     </div>
 
-    <div class="alert alert-danger">Click In 5 Seconds</div>
+    <div class="alert alert-danger" id="s-alert">
+      Click In
+      <p id="3s">3</p>
+      Seconds
+    </div>
 
     <!-- modal example-->
     <div class="black-bg d-none" id="modal-box">
@@ -133,7 +137,15 @@
         }
       });
 
-      setTimeout(function () {}, 5000);
+      var timer = 3;
+      var intvTimer = setInterval(function () {
+        timer -= 1;
+        $("#3s").text(timer);
+        if (timer == 0) {
+          clearInterval(intvTimer);
+          $("#s-alert").hide();
+        }
+      }, 1000);
     </script>
   </body>
 </html>

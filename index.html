@@ -40,7 +40,7 @@
 
     <div class="alert alert-danger" id="s-alert">
       Click In
-      <p id="3s">3</p>
+      <span id="3s">3</span>
       Seconds
     </div>
 
@@ -96,10 +96,12 @@
       // 주요하게 봐야 할점. tag선택자("tag"), if문의 형성 필드의 값을 가져오기 위해서 쓴 $('#id').val() 바닐라는 .value()
       // e.preventDefault()는 폼의 이벤트 기본 동작을 중단. function (e) 는 특정이벤트가 발생할때 호출된 이벤트 객체.
       $("form").on("submit", function (e) {
-        if ($("#field-id").val() == "" || $("#field-password").val() == "") {
+        var fieldId = $("#field-id").val();
+        var fieldPwd = $("#field-password").val();
+        if (fieldId == "" || fieldPwd == "" || !/\S+@\S+.\S+/.test(fieldId)) {
           e.preventDefault();
           alert("incorrect accounts or password");
-        } else if ($("#field-password").val().length < 6) {
+        } else if (fieldPwd.length < 6) {
           e.preventDefault();
           alert("Password must be more than 6");
         }

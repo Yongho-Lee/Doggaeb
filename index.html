@@ -38,7 +38,7 @@
       <button id="login" class="btn btn-danger">Login</button>
     </div>
 
-    <div class="alert alert-danger" id="s-alert">
+    <div class="alert alert-danger mb-0" id="s-alert">
       Click In
       <span id="3s">3</span>
       Seconds
@@ -196,6 +196,13 @@
         console.log($(window).scrollTop()); // scrollY랑 완전 같음.
       });
 
+      $(window).on("scroll", function () {
+        if ($(window).scrollTop() >= 100) {
+          $(".navbar-brand").css({ "font-size": "20px" });
+        } else {
+          $(".navbar-brand").css("font-size", "30px");
+        }
+      });
       // 다음에 할 것
       // 18강 8분 24초까지 봤으니까 거기서 숙제 끝내고 계속 이어할것.
     </script>

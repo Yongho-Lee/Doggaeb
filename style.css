@@ -18,6 +18,16 @@
 
 
 
+.navbar{
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+}
+.navbar-brand{
+  font-size: 30px;
+  transition: font-size 0.3s ease;
+}
+
 /* modal example */
 .black-bg {
     width : 100%;
@@ -36,8 +46,15 @@
     background: white;
     border-radius: 5px;
     padding: 30px;
-    
   } 
+  .main-bg{
+    padding: 100px 20px;
+    background: lightgrey;
+  }
+  
+  
+  /**/
+
 
 
   /* fade out in방식으로 이런 방식도 가능, visibility는 display:none과 비슷하나, none은 html자체에서 제거하는거면 visibility는 남아있음
@@ -52,7 +69,17 @@
 }
   */
 
-.main-bg{
-  padding: 100px 20px;
-  background: lightgrey;
+
+
+.slide-container {
+  width: 300vw;
+  transition: all 1s;
+}
+.slide-box{
+  width: 100vw;
+  float: left;
+}
+
+.slide-box img{
+  width: 100vw;
 }

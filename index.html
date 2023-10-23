@@ -38,7 +38,7 @@
       <button id="login" class="btn btn-danger">Login</button>
     </div>
 
-    <div class="alert alert-danger" id="s-alert">
+    <div class="alert alert-danger mb-0" id="s-alert">
       Click In
       <span id="3s">3</span>
       Seconds
@@ -69,6 +69,25 @@
       </div>
     </div>
 
+    <div style="overflow: hidden">
+      <div class="slide-container">
+        <div class="slide-box">
+          <img src="car1.png" alt="" />
+        </div>
+        <div class="slide-box">
+          <img src="car2.png" alt="" />
+        </div>
+        <div class="slide-box">
+          <img src="car3.png" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+
+    <div style="height: 1000px"></div>
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
@@ -151,6 +170,41 @@
           $("#s-alert").hide();
         }
       }, 1000);
+    </script>
+
+    <script>
+      $(".slide-1").on("click", function () {
+        $(".slide-container").css("transform", "translateX(0vw)");
+      });
+      $(".slide-2").on("click", function () {
+        $(".slide-container").css("transform", "translateX(-100vw)");
+      });
+      $(".slide-3").on("click", function () {
+        $(".slide-container").css("transform", "translateX(-200vw)");
+      });
+    </script>
+
+    <script>
+      // scroll event practice
+      // window.addEventListener("scroll", function () {
+      //   //console.log(window.scrollY); 화면 스크롤 Y축 얼마나 이동했는가 계속 콘솔
+      //   //window.scrollTo(0, 0); // 화면 좌표에 계속 고정시켜버려서 이동시켜줌. 자동으로
+      //   //window.scrollBy(0, 100) // 현재 위치부터 강제로 스크롤 시켜버림. x,y 화면 최상단 위로 버튼 등.
+      // });
+      //위에랑 같은 방식의 Jquery
+      $(window).on("scroll", function () {
+        console.log($(window).scrollTop()); // scrollY랑 완전 같음.
+      });
+
+      $(window).on("scroll", function () {
+        if ($(window).scrollTop() >= 100) {
+          $(".navbar-brand").css({ "font-size": "20px" });
+        } else {
+          $(".navbar-brand").css("font-size", "30px");
+        }
+      });
+      // 다음에 할 것
+      // 18강 8분 24초까지 봤으니까 거기서 숙제 끝내고 계속 이어할것.
     </script>
   </body>
 </html>

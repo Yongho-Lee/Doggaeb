@@ -33,61 +33,23 @@
       <li class="list-group-item">And a fifth one</li>
     </ul>
 
-    <div class="main-bg m-0">
-      <h4>Some text for Banner</h4>
-      <button id="login" class="btn btn-danger">Login</button>
-    </div>
-
-    <div class="alert alert-danger mb-0" id="s-alert">
-      Click In
-      <span id="3s">3</span>
-      Seconds
-    </div>
-
-    <!-- modal example-->
-    <div class="black-bg d-none" id="modal-box">
-      <div class="card border-light white-bg" style="max-width: 30rem">
-        <div class="card-header">Login</div>
-        <div class="card-body">
-          <h5 class="card-title">Use your account to login</h5>
-          <form action="success.html">
-            <div class="my-3">
-              <input type="text" class="form-control" id="field-id" />
-            </div>
-            <div class="my-3">
-              <input type="password" class="form-control" id="field-password" />
-            </div>
-            <button type="submit" class="btn btn-primary" id="modal-send">
-              Login
-            </button>
-            <!-- submit type은 하나만 있어야 함-->
-            <button class="btn btn-danger" type="button" id="modal-close-btn">
-              close
-            </button>
-          </form>
-        </div>
+    <div class="container mt-5">
+      <ul class="list">
+        <li class="tab-button orange">Products</li>
+        <li class="tab-button">Information</li>
+        <li class="tab-button">Shipping</li>
+      </ul>
+      <div class="tab-content show">
+        <p>상품설명입니다. Product</p>
+      </div>
+      <div class="tab-content">
+        <p>스펙설명입니다. Information</p>
+      </div>
+      <div class="tab-content">
+        <p>배송정보입니다. Shipping</p>
       </div>
     </div>
 
-    <div style="overflow: hidden">
-      <div class="slide-container">
-        <div class="slide-box">
-          <img src="car1.png" alt="" />
-        </div>
-        <div class="slide-box">
-          <img src="car2.png" alt="" />
-        </div>
-        <div class="slide-box">
-          <img src="car3.png" alt="" />
-        </div>
-      </div>
-    </div>
-
-    <button class="slide-1">1</button>
-    <button class="slide-2">2</button>
-    <button class="slide-3">3</button>
-
-    <div style="height: 1000px"></div>
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
@@ -99,7 +61,6 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-
     <script src="main.js"></script>
   </body>
 </html>
